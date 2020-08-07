@@ -1,0 +1,145 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+}
+
+/* content */
+#app {
+    height: 100%;
+    position: relative;
+    /*相对定位 */
+}
+
+.song__bg{
+    position: absolute;
+    /*绝对定位*/
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background: url(images/coverblur.jpg) no-repeat center;
+    background-size: auto 100%;
+}
+.song__bg::before {
+    content: " ";
+    position: absolute;
+    /*绝对定位*/
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+}
+.song-wrap{
+    padding-top: 70px;
+}
+
+.song-disc{
+    position: relative;
+    /*相对定位 */
+    width: 296px;
+    height: 296px;
+    margin: 0 auto;
+}
+.song-disc__bg{
+    position: absolute;
+    /*绝对定位*/
+    z-index: 2;
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    background: url(images/disk.png) no-repeat center;
+    background-size: contain;/*contain：把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。*/
+}
+.song-disc__cover{
+    position: absolute;
+    /*绝对定位*/
+    z-index: 1;
+    width: 184px;
+    height: 184px;
+    left: 50%;
+    top: 50%;
+    margin-left: -92px;
+    margin-top: -92px;
+}
+.song-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;/*overflow 属性规定当内容溢出元素框时发生的事情。当值为hidden时，代表内容会被修剪，并且其余内容是不可见的。*/
+    font-size: 0;
+}
+.u-img{
+    width: 100%;
+}
+.song-img.play {
+    animation:circle 10s linear infinite;
+}
+
+/*
+通过 @keyframes 规则，您能够创建动画。
+创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
+在动画过程中，您能够多次改变这套 CSS 样式。
+以百分比来规定改变发生的时间，或者通过关键词 "from" 和 "to"，等价于 0% 和 100%。
+0% 是动画的开始时间，100% 动画的结束时间。
+
+语法：@keyframes animationname {keyframes-selector {css-styles;}}
+*/
+@keyframes circle {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.play-btn {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    /*绝对定位*/
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: url(images/play_rdi_btn_play.png) no-repeat;
+    background-size: contain;
+    /*contain：把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。*/
+}
+.play-btn.play {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    /*绝对定位*/
+    z-index: 10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: url(images/play_rdi_btn_pause.png) no-repeat;
+    background-size: contain;
+    /* contain：把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。*/
+}
+
+.song-needle {
+    position: absolute;
+    /*绝对定位*/
+    z-index: 10;
+    top: -70px;
+    width: 96px;
+    height: 137px;
+    left: 133px;
+    background: url(images/play_needle.png) no-repeat;
+    background-size: contain;/* contain：把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。*/
+    transform: rotate(-30deg);
+    transform-origin: left top;/* transform-origin CSS属性让你更改一个元素变形的原点。*/
+    transition: transform .5s;
+}
+.song-needle.play {
+    transform: rotate(0);
+}
